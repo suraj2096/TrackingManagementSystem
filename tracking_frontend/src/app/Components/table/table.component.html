@@ -1,0 +1,72 @@
+<div class="w-75 m-auto">
+    <div class="row m-3">
+        <div class="col-8">
+            <h2 class="text-dark">Shipping Detail</h2>
+        </div>
+      <div class="col-4">
+        <button class="btn btn-primary" routerLink="/addtable" (click)="addTable()">Add Shipping</button>
+      </div>
+    </div>
+      <div *ngIf="shippingData$ | async as shippingData">
+        <div *ngIf="shippingData.length == 0">
+          <h2 class="text-danger">No data</h2>
+        </div>
+        <div>
+          <table
+            *ngIf="shippingData.length != 0"
+            class="table w-100 table-bordered table-stripped table-hover"
+          >
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Sender Address</th>
+                <th>Receiver Address</th>
+                <th>Shipping Method</th>
+                <th>Shipping Status</th>
+                <th>Shipping Cost</th>
+                <th class="table w-25">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let shipData of shippingData">
+                <td>{{ shipData.name || shipData.Name }}</td>
+                <td>{{ shipData.senderAddress || shipData.SenderAddress }}</td>
+                <td>{{ shipData.receiverAddress || shipData.ReceiverAddress}}</td>
+                <td>{{ shipData.shippingMethod || shipData.ShippingMethod }}</td>
+                <td>{{ shipData.shippingStatus || shipData.ShippingStatus }}</td>
+                <td>{{ shipData.shippingCost || shipData.ShippingCost }}</td>
+                <td>
+                  <button [disabled]="shipData.isDeleted==true" class="btn btn-info" (click)="editClick(shipData.id || shipData.shippingId)"
+                    >Edit Shipping</button
+                  >
+                  <button [disabled]="shipData.isDeleted ==true"
+                  class="btn btn-danger m-2"
+                  (click)="deleteClick(shipData.shippingId)"
+                >
+                  Delete
+                </button>
+                </td>
+                <table class="table w-100 table-bordered table-stripped table-hover">
+                  <thead >
+                    <tr>
+                      <th>Name</th>
+                      <th>Operation</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody style="overflow-y: scroll;">
+                    <tr *ngFor="let trackingDetail of shipData.trackingDetails">
+                      <td>{{trackingDetail.applicationUserDataChange.userName}}</td>
+                      <td *ngIf="trackingDetail.userOperation==1" class="text-center" >Add</td>
+                      <td *ngIf="trackingDetail.userOperation==2" class="text-center">Update</td>
+                      <td *ngIf="trackingDetail.userOperation==3" class="text-center">Delete</td>
+                      <td>{{trackingDetail.trackingDate | date}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>

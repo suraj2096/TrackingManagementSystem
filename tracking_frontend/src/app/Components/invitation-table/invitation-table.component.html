@@ -1,0 +1,11 @@
+<div class="row">
+     <h2 class="text-center text-info">Invited person List</h2>
+</div>
+<div >
+   <div class="row w-50 m-auto" style="overflow-x: scroll;" >
+    <button class="col-2 btn btn-info h-20" (click)="showTableClick(invitation.invitationSenderUserId)" *ngFor="let invitation of invitations" >{{invitation.applicationUserSender.userName}}</button>
+   </div>
+</div>
+<ng-container *ngIf="showTable">
+    <app-table [invitaionerPersonId]="invitationsId"></app-table>
+</ng-container>

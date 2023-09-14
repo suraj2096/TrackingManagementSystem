@@ -1,0 +1,51 @@
+<div class=" m-auto mt-5 pt-5" style="max-width:35vw">
+<div class="card text-center">
+    <div class="card-header bg-dark text-white">
+     Login
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="col-12">
+          <div class="row">
+        <div class="col-3">
+            <label>UserName</label>
+        </div>
+        <div class="col-9">
+            <input required type="text" class="form-control" name="UserName" [(ngModel)]="LoginUser.UserName"  #UserName="ngModel"/>
+            <div *ngIf="UserName.invalid && (UserName.dirty || UserName.touched)">
+            <div *ngIf="UserName.errors?.['required']">
+              <p class="text-danger">Name is Required</p>
+            </div>
+    </div>
+        </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3">
+                <label>Password</label>
+            </div>
+            <div class="col-9">
+                <input type="password" class="form-control" name="Password" [(ngModel)]="LoginUser.Password" required  minlength="7" #password="ngModel"/>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <div *ngIf="password.errors?.['minlength']">
+                    <p class="text-danger">Password must be 7 characters long</p>
+                  </div>
+                  <div *ngIf="password.errors?.['required']">
+                    <p class="text-danger">Password is Required</p>
+                  </div>
+          </div>
+            </div>
+            <div *ngIf="apiStatus$ | async as apiStatus" class="text-danger">
+             {{apiStatus.apiResponseMessage}}
+            </div>
+              </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="card-footer text-body-secondary">
+     <div class="m-auto col-5">
+      <button class="btn btn-success" (click)="loginClick()">Login</button>
+     </div>
+    </div>
+  </div>
+  </div>

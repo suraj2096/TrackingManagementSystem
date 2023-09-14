@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DataTrackingSystem.props" />
+</Project>

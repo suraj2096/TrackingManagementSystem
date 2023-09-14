@@ -1,0 +1,76 @@
+<div class=" m-auto mt-5 pt-5" style="max-width:35vw">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white">
+       Edit Shipping 
+        </div>
+        <div class="card-body">
+          <form >
+            <input required type="hidden" class="form-control" name="shippingId" [(ngModel)]="shipppingUpdatePost.shippingId"  />
+            <div class="col-12">
+              <div class="row">
+            <div class="col-3">
+                <label>Shipping Name</label>
+            </div>
+            <div class="col-9">
+                <input required type="text" class="form-control" name="name" [(ngModel)]="shipppingUpdatePost.name"  />
+        </div>
+            </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-3">
+                    <label>Sender Address</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" name="SenderAddress" [(ngModel)]="shipppingUpdatePost.senderAddress" />
+              </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label>Receiver Address</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control" name="ReceiverAddress" [(ngModel)]="shipppingUpdatePost.receiverAddress" />
+                  </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            <label>Shipping Method</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" name="Password" [(ngModel)]="shipppingUpdatePost.shippingMethod" />
+                      </div>
+                        </div>
+                      
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label>Shipping Status</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" name="ShippingStatus" [(ngModel)]="shipppingUpdatePost.shippingStatus"/>
+                          </div>
+                            </div>
+                       
+                            <div class="row mt-2">
+                                <div class="col-3">
+                                    <label>Shipping Cost</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="ShippingCost" [(ngModel)]="shipppingUpdatePost.shippingCost"  />
+                              </div>
+                                </div>
+                                <input type="hidden" class="form-control" name="UserId" [(ngModel)]="shipppingUpdatePost.userId"  />
+
+                </form>
+    
+        
+        <div class="card-footer text-body-secondary">
+         <div class="m-auto col-5">
+          <button class="btn btn-success"  type="button" (click)="editShipping()">Submit</button>
+         </div>
+        </div>
+        </div>
+      </div>
+      

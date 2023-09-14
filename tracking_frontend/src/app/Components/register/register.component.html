@@ -1,0 +1,89 @@
+<div class=" m-auto mt-5 pt-5" style="max-width:35vw">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white">
+         Register
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="col-12">
+              <div class="row">
+            <div class="col-3">
+                <label>UserName</label>
+            </div>
+            <div class="col-9">
+                <input type="text" class="form-control" name="UserName" [(ngModel)]="RegisterUser.UserName"  #Name="ngModel" required />
+                <div *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+                  <div *ngIf="Name.errors?.['required']">
+                    <p class="text-danger">Name is Required</p>
+                  </div>
+            </div>
+              </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-3">
+                    <label>Email</label>
+                </div>
+                <div class="col-9">
+                    <input type="email" class="form-control" name="Email" [(ngModel)]="RegisterUser.Email"  #Email="ngModel" required/>
+                    <div *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+                      <div *ngIf="Email.errors?.['required']">
+                        <p class="text-danger">Email is Required</p>
+                      </div>
+                </div>
+                  </div>
+                  </div>
+
+
+              <div class="row mt-2">
+                <div class="col-3">
+                    <label>Password</label>
+                </div>
+                <div class="col-9">
+                    <input type="password" class="form-control" name="Password" [(ngModel)]="RegisterUser.Password" required  minlength="7" #Password="ngModel" />
+                    <div *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+                      <div *ngIf="Password.errors?.['minlength']">
+                        <p class="text-danger">Password must be 7 characters long</p>
+                      </div>
+                      <div *ngIf="Password.errors?.['required']">
+                        <p class="text-danger">Password is Required</p>
+                      </div>
+                </div>
+                  </div>
+                  </div>
+
+
+                  <div class="row mt-2">
+                    <div class="col-3">
+                        <label>Confirm Password</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="password" class="form-control" name="ConfirmPassword" [(ngModel)]="RegisterUser.ConfirmPassword" required   #ConfirmPassword="ngModel"/>
+                        <div *ngIf=" (ConfirmPassword.dirty || ConfirmPassword.touched)">
+                          <div *ngIf="RegisterUser.Password.length!=0 && (RegisterUser.Password != RegisterUser.ConfirmPassword)">
+                            <p class="text-danger">Password and Confirm Password not match.........</p>
+                          </div>
+                          </div>
+
+
+
+
+
+
+                        
+                    </div>
+
+                      </div>
+                      
+            </div>
+          </form>
+        
+    
+        </div>
+        <div class="card-footer text-body-secondary">
+         <div class="m-auto col-5">
+          <button class="btn btn-success" (click)="RegisterUserClick()">Register</button>
+         </div>
+        </div>
+      </div>
+      </div>
